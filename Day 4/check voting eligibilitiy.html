@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voting Eligibility</title>
+</head>
+<body>
+
+<h2>Check Voting Eligibility</h2>
+
+<button onclick="checkVoting()">Check</button>
+
+<script>
+function checkVoting() {
+
+    let age = parseInt(prompt("Enter your age"));
+
+    if (age >= 18) {
+        alert("Eligible for Voting");
+    } else {
+        alert("Not Eligible for Voting");
+    }
+
+}
+</script>
+
+</body>
+</html>

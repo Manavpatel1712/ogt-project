@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+let marks = [70,80,90,60,75];
+
+document.write("<h2>While Loop</h2>");
+
+let i = 0;
+let total1 = 0;
+
+while(i < marks.length){
+    total1 += marks[i];
+    i++;
+}
+
+document.write("Total Marks = " + total1);
+
+document.write("<hr>");
+document.write("<h2>Do While Loop</h2>");
+
+let j = 0;
+let total2 = 0;
+
+do{
+    total2 += marks[j];
+    j++;
+}while(j < marks.length);
+
+document.write("Total Marks = " + total2);
+
+</script>
+
+</body>
+</html>

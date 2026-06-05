@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Data Types</title>
+</head>
+<body>
+
+    <h1>JavaScript Data Types</h1>
+
+    <script>
+
+        // =========================
+        // Primitive Data Types
+        // =========================
+
+        // Number
+        let num = 25;
+        document.write("<h3>Number</h3>");
+        document.write("Value: " + num + "<br>");
+        document.write("Type: " + typeof(num) + "<br><br>");
+
+        // Boolean
+        let isStudent = true;
+        document.write("<h3>Boolean</h3>");
+        document.write("Value: " + isStudent + "<br>");
+        document.write("Type: " + typeof(isStudent) + "<br><br>");
+
+        // String
+        let name = "Ashraf";
+        document.write("<h3>String</h3>");
+        document.write("Value: " + name + "<br>");
+        document.write("Type: " + typeof(name) + "<br><br>");
+
+        // Undefined
+        let x;
+        document.write("<h3>Undefined</h3>");
+        document.write("Value: " + x + "<br>");
+        document.write("Type: " + typeof(x) + "<br><br>");
+
+        // Null
+        let emptyValue = null;
+        document.write("<h3>Null</h3>");
+        document.write("Value: " + emptyValue + "<br>");
+        document.write("Type: " + typeof(emptyValue) + "<br><br>");
+
+        // Symbol
+        let sym = Symbol("id");
+        document.write("<h3>Symbol</h3>");
+        document.write("Type: " + typeof(sym) + "<br><br>");
+
+        // BigInt
+        let bigNumber = 1234567890123456789012345678901234567890n;
+        document.write("<h3>BigInt</h3>");
+        document.write("Value: " + bigNumber + "<br>");
+        document.write("Type: " + typeof(bigNumber) + "<br><br>");
+
+
+
+        // =========================
+        // Non-Primitive Data Types
+        // =========================
+
+        // Object
+        let student = {
+            name: "Ashraf",
+            age: 20
+        };
+
+        document.write("<h3>Object</h3>");
+        document.write("Name: " + student.name + "<br>");
+        document.write("Age: " + student.age + "<br>");
+        document.write("Type: " + typeof(student) + "<br><br>");
+
+        // Array
+        let colors = ["Red", "Green", "Blue"];
+
+        document.write("<h3>Array</h3>");
+        document.write("Values: " + colors + "<br>");
+        document.write("Type: " + typeof(colors) + "<br><br>");
+
+        // Function
+        function greet() {
+            return "Hello World";
+        }
+
+        document.write("<h3>Function</h3>");
+        document.write("Output: " + greet() + "<br>");
+        document.write("Type: " + typeof(greet) + "<br><br>");
+
+    </script>
+
+</body>
+</html>

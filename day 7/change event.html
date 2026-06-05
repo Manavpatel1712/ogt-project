@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ select product: <select name="id=product">
+    <option value="1">45000</option>
+    <option value="2">22000</option>
+    <option value="3">15000</option>
+ </select>
+
+ <br><br>
+
+ net price: <input type="text" name="netprice" id="netprice"><br><br>
+ quantity: <input type="text" name="quantity" id="quantity"><br><br>
+ total amount: <input type="text" name="totalamount" id="totalamount" readonly><br><br>
+
+ <script>
+    var product = document.getElementsByName("id=product")[0];
+    var netprice = document.getElementById("netprice");
+    var quantity = document.getElementById("quantity");
+    var totalamount = document.getElementById("totalamount");
+
+    product.addEventListener("change", function() {
+        var selectedOption = product.options[product.selectedIndex];
+        netprice.value = selectedOption.text;
+    });
+
+    quantity.addEventListener("input", function() {
+        var price = parseFloat(netprice.value);
+        var qty = parseInt(quantity.value);
+        if (!isNaN(price) && !isNaN(qty)) {
+            var totalPrice = price * qty;
+            console.log("Total Price: " + totalPrice);
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!-- Save this file as index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farming Management System</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;   
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4fff4;
+    }
+
+    header{
+      background:#2e7d32;
+      color:white;
+      padding:20px;
+      text-align:center;
+    }
+
+    nav{
+      background:#36b43e;
+      padding:15px;
+      text-align:center;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 15px;
+      font-size:18px;
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:30px auto;
+    }
+
+    .card{
+      background:white;
+      padding:20px;
+      margin-bottom:20px;
+      border-radius:10px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .card h2{
+      margin-bottom:15px;
+      color:#2e7d32;
+    }
+
+    input, select{
+      width:100%;
+      padding:10px;
+      margin:10px 0;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+
+    button{
+      background:#2e7d32;
+      color:white;
+      border:none;
+      padding:10px 20px;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#1b5e20;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:15px;
+    }
+
+    table th, table td{
+      border:1px solid #ddd;
+      padding:12px;
+      text-align:center;
+    }
+
+    table th{
+      background:#2e7d32;
+      color:white;
+    }
+
+    .delete-btn{
+      background:red;
+    }
+
+    .delete-btn:hover{
+      background:darkred;
+    }
+
+    footer{
+      background:#1b5e20;
+      color:white;
+      text-align:center;
+      padding:15px;
+      margin-top:30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Farming Management System</h1>
+    <p>Manage Crops, Farmers & Production</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Crops</a>
+    <a href="#">Farmers</a>
+    <a href="#">Reports</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Add Crop Section -->
+    <div class="card">
+      <h2>Add Crop Details</h2>
+
+      <input type="text" id="cropName" placeholder="Enter Crop Name">
+
+      <input type="text" id="farmerName" placeholder="Enter Farmer Name">
+
+      <input type="number" id="quantity" placeholder="Enter Quantity (KG)">
+
+      <select id="season">
+         <option value="">Select Season</option>
+        <option>Kharif</option>
+        <option>Rabi</option>
+        <option>Summer</option>
+      </select>
+
+      <button onclick="addCrop()">Add Crop</button>
+    </div>
+
+    <!-- Crop Table -->
+    <div class="card">
+      <h2>Crop Records</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Crop Name</th>
+            <th>Farmer Name</th>
+            <th>Quantity</th>
+            <th>Season</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="cropTable">
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Farming Management System</p>
+  </footer>
+
+  <script>
+    function addCrop(){
+
+      let cropName = document.getElementById("cropName").value;
+      let farmerName = document.getElementById("farmerName").value;
+      let quantity = document.getElementById("quantity").value;
+      let season = document.getElementById("season").value;
+
+      if(cropName === "" || farmerName === "" || quantity === "" || season === ""){
+        alert("Please fill all fields");
+        return;
+      }
+
+      let table = document.getElementById("cropTable");
+
+      let row = table.insertRow();
+
+      row.insertCell(0).innerHTML = cropName;
+      row.insertCell(1).innerHTML = farmerName;
+      row.insertCell(2).innerHTML = quantity + " KG";
+      row.insertCell(3).innerHTML = season;
+
+      let actionCell = row.insertCell(4);
+
+      actionCell.innerHTML = `
+        <button class="delete-btn" onclick="deleteRow(this)">
+          Delete
+        </button>
+      `;
+
+      // Clear Fields
+      document.getElementById("cropName").value = "";
+      document.getElementById("farmerName").value = "";
+      document.getElementById("quantity").value = "";
+      document.getElementById("season").value = "";
+    }
+
+    function deleteRow(button){
+      let row = button.parentElement.parentElement;
+      row.remove();
+    }
+  </script>
+
+</body>
+</html>

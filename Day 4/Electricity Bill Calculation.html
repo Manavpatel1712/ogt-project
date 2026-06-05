@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity Bill</title>
+</head>
+<body>
+
+<h2>Electricity Bill Calculation</h2>
+
+<input type="number" id="unit" placeholder="Enter units">
+
+<button onclick="calculateBill()">Calculate</button>
+
+<p id="result"></p>
+
+<script>
+
+function calculateBill() {
+
+    let unit = Number(document.getElementById("unit").value);
+    let bill;
+
+    if (unit <= 100) {
+        bill = unit * 5;
+    }
+    else {
+        bill = unit * 10;
+    }
+
+    document.getElementById("result").innerHTML = "Electricity Bill = ₹" + bill;
+
+}
+
+</script>
+
+</body>
+</html>

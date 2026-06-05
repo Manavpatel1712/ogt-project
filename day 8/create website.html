@@ -1,0 +1,662 @@
+# Farmer Profit Management Website
+
+Save this as `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Profit Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f3fff4;
+      color:#222;
+    }
+
+    .login-page{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .auth-box{
+      width:380px;
+      background:white;
+      padding:35px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      animation:fade 0.5s ease;
+    }
+
+    .auth-box h2{
+      text-align:center;
+      margin-bottom:25px;
+      color:#2e7d32;
+    }
+
+    .auth-box input{
+      width:100%;
+      padding:14px;
+      margin:12px 0;
+      border-radius:10px;
+      border:1px solid #ccc;
+      outline:none;
+    }
+
+    .auth-box button{
+      width:100%;
+      padding:14px;
+      background:#2e7d32;
+      border:none;
+      color:white;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    .auth-box button:hover{
+      background:#1b5e20;
+    }
+
+    .switch{
+      text-align:center;
+      margin-top:15px;
+      color:#555;
+      cursor:pointer;
+    }
+
+    .main-site{
+      display:none;
+    }
+
+    header{
+      background:linear-gradient(135deg,#1b5e20,#43a047);
+      color:white;
+      padding:18px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:20px;
+    }
+
+    .hero{
+      height:70vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+      url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      color:white;
+    }
+
+    .hero h1{
+      font-size:55px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      font-size:18px;
+    }
+
+    section{
+      padding:60px 8%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .title h2{
+      color:#1b5e20;
+      font-size:36px;
+    }
+
+    .dashboard{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      padding:30px;
+      border-radius:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card h3{
+      color:#2e7d32;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    .form-box{
+      background:white;
+      padding:35px;
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      max-width:850px;
+      margin:auto;
+    }
+
+    .form-box input,
+    .form-box select{
+      width:100%;
+      padding:14px;
+      margin:12px 0;
+      border-radius:10px;
+      border:1px solid #ccc;
+    }
+
+    .form-box button{
+      width:100%;
+      padding:14px;
+      background:#2e7d32;
+      border:none;
+      color:white;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .form-box button:hover{
+      background:#1b5e20;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:30px;
+      background:white;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    table th{
+      background:#2e7d32;
+      color:white;
+      padding:15px;
+    }
+
+    table td{
+      padding:15px;
+      border-bottom:1px solid #eee;
+      text-align:center;
+    }
+
+    .profit{
+      color:green;
+      font-weight:bold;
+    }
+
+    .loss{
+      color:red;
+      font-weight:bold;
+    }
+
+    .delete-btn{
+      background:red;
+      color:white;
+      border:none;
+      padding:8px 14px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    footer{
+      background:#1b5e20;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+    }
+
+    @keyframes fade{
+      from{
+        transform:translateY(-20px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:38px;
+      }
+
+      header{
+        flex-direction:column;
+      }
+
+      nav{
+        margin-top:10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+
+  <div class="login-page" id="loginPage">
+
+    <div class="auth-box" id="loginBox">
+
+      <h2>Farmer Login</h2>
+
+      <input type="text" id="loginUsername" placeholder="Enter Username">
+
+      <input type="password" id="loginPassword" placeholder="Enter Password">
+
+      <button onclick="login()">Login</button>
+
+      <div class="switch" onclick="showSignup()">
+        Don't have account? Sign Up
+      </div>
+
+    </div>
+
+    <div class="auth-box" id="signupBox" style="display:none;">
+
+      <h2>Create Account</h2>
+
+      <input type="text" id="signupUsername" placeholder="Create Username">
+
+      <input type="password" id="signupPassword" placeholder="Create Password">
+
+      <button onclick="signup()">Sign Up</button>
+
+      <div class="switch" onclick="showLogin()">
+        Already have account? Login
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MAIN WEBSITE -->
+
+  <div class="main-site" id="mainSite">
+
+    <header>
+      <div class="logo">🌾 Farmer Profit Manager</div>
+
+      <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#profit">Profit</a>
+        <a href="#records">Records</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <h1>Track Farming Profit Easily</h1>
+
+        <p>
+          Manage investments, calculate profit and analyze seasonal farming performance.
+        </p>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboard">
+
+      <div class="title">
+        <h2>Dashboard Analytics</h2>
+      </div>
+
+      <div class="dashboard">
+
+        <div class="card">
+          <h3>Total Investment</h3>
+          <p id="totalInvestment">₹0</p>
+        </div>
+
+        <div class="card">
+          <h3>Total Revenue</h3>
+          <p id="totalRevenue">₹0</p>
+        </div>
+
+        <div class="card">
+          <h3>Net Profit</h3>
+          <p id="netProfit">₹0</p>
+        </div>
+
+        <div class="card">
+          <h3>Total Fertilizer Cost</h3>
+          <p id="totalFertilizer">₹0</p>
+        </div>
+
+        <div class="card">
+          <h3>Total Products</h3>
+          <p id="totalProducts">0</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FORM -->
+
+    <section id="profit">
+
+      <div class="title">
+        <h2>Season Wise Profit Management</h2>
+      </div>
+
+      <div class="form-box">
+
+        <!-- Product selection will come from season -->
+
+        <input type="number" id="investment" placeholder="Total Investment Amount">
+
+        <input type="number" id="landArea" placeholder="Land Area (in Acres)">
+
+        <input type="number" id="fertilizerCost" placeholder="Fertilizer Cost">
+
+        <input type="number" id="revenue" placeholder="Total Selling Revenue">
+
+        <select id="season" onchange="updateProducts()">
+          <option value="">Select Season</option>
+          <option>Kharif</option>
+          <option>Rabi</option>
+          <option>Summer</option>
+        </select>
+
+        <select id="seasonProduct">
+          <option value="">Select Product</option>
+        </select>
+
+        <button onclick="addRecord()">Add Farming Record</button>
+
+      </div>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Investment</th>
+            <th>Land Area</th>
+            <th>Fertilizer Cost</th>
+            <th>Revenue</th>
+            <th>Net Profit</th>
+            <th>Season</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="recordTable"></tbody>
+
+      </table>
+
+    </section>
+
+    <footer>
+      <p>© 2026 Farmer Profit Management System</p>
+    </footer>
+
+  </div>
+
+  <script>
+
+    const seasonProducts = {
+      Kharif:['Rice','Maize','Cotton','Soybean','Sugarcane'],
+      Rabi:['Wheat','Barley','Mustard','Peas','Gram'],
+      Summer:['Watermelon','Cucumber','Tomato','Sunflower','Moong']
+    };
+
+    function updateProducts(){
+
+      let season = document.getElementById('season').value;
+
+      let productDropdown = document.getElementById('seasonProduct');
+
+      productDropdown.innerHTML = '<option value="">Select Product</option>';
+
+      if(seasonProducts[season]){
+
+        seasonProducts[season].forEach(product => {
+
+          let option = document.createElement('option');
+
+          option.value = product;
+          option.text = product;
+
+          productDropdown.appendChild(option);
+        });
+      }
+    }
+
+    let users = [];
+
+    function showSignup(){
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('signupBox').style.display = 'block';
+    }
+
+    function showLogin(){
+      document.getElementById('signupBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+    }
+
+    function signup(){
+
+      let username = document.getElementById('signupUsername').value;
+      let password = document.getElementById('signupPassword').value;
+
+      if(username === '' || password === ''){
+        alert('Please fill all fields');
+        return;
+      }
+
+      users.push({username,password});
+
+      alert('Account Created Successfully');
+
+      showLogin();
+    }
+
+    function login(){
+
+      let username = document.getElementById('loginUsername').value;
+      let password = document.getElementById('loginPassword').value;
+
+      let validUser = users.find(user => user.username === username && user.password === password);
+
+      if(validUser){
+
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainSite').style.display = 'block';
+
+        alert('Login Successful');
+      }
+      else{
+        alert('Invalid Username or Password');
+      }
+    }
+
+    let totalInvestment = 0;
+    let totalRevenue = 0;
+    let totalNetProfit = 0;
+    let totalProducts = 0;
+    let totalFertilizer = 0;
+
+    function addRecord(){
+
+      let productName = document.getElementById('seasonProduct').value;
+      let investment = Number(document.getElementById('investment').value);
+      let landArea = Number(document.getElementById('landArea').value);
+      let fertilizerCost = Number(document.getElementById('fertilizerCost').value);
+      let revenue = Number(document.getElementById('revenue').value);
+      let season = document.getElementById('season').value;
+
+      if(productName === '' || investment === 0 || landArea === 0 || fertilizerCost === 0 || revenue === 0 || season === ''){
+        alert('Please fill all fields');
+        return;
+      }
+
+      let totalExpense = investment + fertilizerCost;
+
+      let profit = revenue - totalExpense;
+
+      let table = document.getElementById('recordTable');
+
+      let row = table.insertRow();
+
+      row.insertCell(0).innerHTML = productName;
+      row.insertCell(1).innerHTML = '₹' + investment;
+      row.insertCell(2).innerHTML = landArea + ' Acres';
+      row.insertCell(3).innerHTML = '₹' + fertilizerCost;
+      row.insertCell(4).innerHTML = '₹' + revenue;
+
+      let profitCell = row.insertCell(5);
+
+      if(profit >= 0){
+        profitCell.innerHTML = '<span class="profit">₹' + profit + '</span>';
+      }
+      else{
+        profitCell.innerHTML = '<span class="loss">₹' + profit + '</span>';
+      }
+
+      row.insertCell(6).innerHTML = season;
+
+      let actionCell = row.insertCell(7);
+
+      actionCell.innerHTML = `
+        <button class="delete-btn" onclick="deleteRecord(this, ${investment}, ${revenue}, ${profit})">
+          Delete
+        </button>
+      `;
+
+      totalInvestment += investment;
+      totalRevenue += revenue;
+      totalFertilizer += fertilizerCost;
+      totalNetProfit += profit;
+      totalProducts++;
+
+      updateDashboard();
+
+      document.getElementById('productName').value = '';
+      document.getElementById('investment').value = '';
+      document.getElementById('landArea').value = '';
+      document.getElementById('fertilizerCost').value = '';
+      document.getElementById('revenue').value = '';
+      document.getElementById('season').value = '';
+    }
+
+    function deleteRecord(button, investment, revenue, profit){
+
+      let row = button.parentElement.parentElement;
+      row.remove();
+
+      totalInvestment -= investment;
+      totalRevenue -= revenue;
+      totalFertilizer -= fertilizerCost;
+      totalNetProfit -= profit;
+      totalProducts--;
+
+      updateDashboard();
+    }
+
+    function updateDashboard(){
+
+      document.getElementById('totalInvestment').innerHTML = '₹' + totalInvestment;
+
+      document.getElementById('totalRevenue').innerHTML = '₹' + totalRevenue;
+
+      document.getElementById('netProfit').innerHTML = '₹' + totalNetProfit;
+
+      document.getElementById('totalProducts').innerHTML = totalProducts;
+
+      document.getElementById('totalFertilizer').innerHTML = '₹' + totalFertilizer;
+    }
+
+  </script>
+
+</body>
+</html>
+```
+
+# Features Included
+
+* Login page
+* Sign up page
+* Aesthetic farming UI
+* Total investment calculator
+* Total revenue calculator
+* Net profit calculation
+* Season wise management
+* Product records table
+* Dashboard analytics
+* Delete records
+* Responsive design
+* Animated modern layout
+
+# Future Features You Can Add
+
+* Firebase database
+* MySQL backend
+* PDF report download
+* AI crop suggestions
+* Weather API
+* Chart analytics
+* Dark mode
+* Mobile app version
+* Admin panel
+* Search and filter

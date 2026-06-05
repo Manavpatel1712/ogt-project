@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>ATM PIN Checking</h2>
+
+<input type="password" id="pin" placeholder="Enter PIN">
+<button onclick="checkPin()">Check</button>
+
+<p id="output"></p>
+
+<script>
+
+function checkPin(){
+
+    let correctPin = "1234";
+    let userPin = document.getElementById("pin").value;
+
+    // WHILE LOOP
+    let result1 = "";
+
+    while(userPin === correctPin){
+        result1 = "Correct PIN (While Loop)";
+        break;
+    }
+
+    if(userPin !== correctPin){
+        result1 = "Wrong PIN";
+    }
+
+    // DO WHILE LOOP
+    let result2 = "";
+
+    do{
+
+        if(userPin === correctPin){
+            result2 = "Correct PIN (Do While Loop)";
+        }
+        else{
+            result2 = "Wrong PIN";
+        }
+
+    }while(false);
+
+    document.getElementById("output").innerHTML =
+    result1 + "<br>" + result2;
+
+}
+
+</script>
+
+</body>
+</html>

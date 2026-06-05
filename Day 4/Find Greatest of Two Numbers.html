@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greatest Number</title>
+</head>
+<body>
+
+<h2>Find Greatest Number</h2>
+
+<input type="number" id="num1" placeholder="Enter first number">
+<input type="number" id="num2" placeholder="Enter second number">
+
+<button onclick="findGreatest()">Check</button>
+
+<p id="result"></p>
+
+<script>
+function findGreatest() {
+
+    let a = document.getElementById("num1").value;
+    let b = document.getElementById("num2").value;
+
+    if (a > b) {
+        document.getElementById("result").innerHTML = a + " is Greater";
+    } else {
+        document.getElementById("result").innerHTML = b + " is Greater";
+    }
+
+}
+</script>
+
+</body>
+</html>

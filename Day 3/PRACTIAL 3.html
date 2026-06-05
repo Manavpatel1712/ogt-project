@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation Start Stop</title>
+
+<style>
+
+body{
+    text-align:center;
+    background:#222;
+    color:white;
+    font-family:Arial;
+    margin-top:100px;
+}
+
+/* BOX */
+
+.box{
+    width:150px;
+    height:150px;
+    background:orange;
+    margin:50px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:25px;
+    font-weight:bold;
+
+    animation:moveBox 4s infinite;
+}
+
+/* ANIMATION */
+
+@keyframes moveBox{
+
+    0%{
+        transform:translateX(0px) rotate(0deg);
+        background:red;
+    }
+
+    25%{
+        transform:translateX(200px) rotate(90deg);
+        background:blue;
+    }
+
+    50%{
+        transform:translateY(150px) rotate(180deg);
+        background:green;
+    }
+
+    75%{
+        transform:translateX(-200px) rotate(270deg);
+        background:purple;
+    }
+
+    100%{
+        transform:translateX(0px) rotate(360deg);
+        background:orange;
+    }
+}
+
+/* BUTTON CONTAINER */
+
+.buttons{
+    margin-top:200px;   /* LOWER BUTTONS */
+}
+
+/* BUTTONS */
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.start{
+    background:green;
+    color:white;
+}
+
+.stop{
+    background:red;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>CSS Animation Control</h1>
+
+<div class="box" id="myBox">
+    BOX
+</div>
+
+<div class="buttons">
+
+    <button class="start" onclick="startAnimation()">
+        Start
+    </button>
+
+    <button class="stop" onclick="stopAnimation()">
+        Stop
+    </button>
+
+</div>
+
+<script>
+
+let box = document.getElementById("myBox");
+
+function stopAnimation(){
+    box.style.animationPlayState = "paused";
+}
+
+function startAnimation(){
+    box.style.animationPlayState = "running";
+}
+
+</script>
+
+</body>
+</html>

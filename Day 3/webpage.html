@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Design</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:white;
+}
+
+/* HEADER */
+
+.header{
+    background:green;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.header h1{
+    font-size:60px;
+}
+
+/* MENU */
+
+.menu{
+    background:black;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+}
+
+.menu a:hover{
+    background:orange;
+}
+
+/* CONTENT */
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    flex:1;
+    border-radius:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .header h1{
+        font-size:35px;
+    }
+
+    .container{
+        flex-direction:column;
+    }
+
+    .menu{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Responsive Design</h1>
+    <p>Resize screen to see responsive effect</p>
+</div>
+
+<div class="menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</div>
+
+<div class="container">
+
+    <div class="box">
+        <h2>Box 1</h2>
+        <p>This is responsive content.</p>
+    </div>
+
+    <div class="box">
+        <h2>Box 2</h2>
+        <p>This layout changes on mobile screen.</p>
+    </div>
+
+    <div class="box">
+        <h2>Box 3</h2>
+        <p>Using media query in CSS.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

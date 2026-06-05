@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetInterval Function</title>
+</head>
+<body id="my boody ">
+
+    
+</body>
+<script>
+    var colors = ["red", "blue", "green", "yellow", "orange"];
+    var mybody = document.getElementById("my boody");
+    var i=0;
+
+    setInterval(function() {
+        mybody.style.backgroundColor = colors[i];
+        ++i;
+        i = (i + 1) % colors.length;
+    }, 1000);
+</script>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+
+    <form method="post">
+
+        <table border="1" cellspacing="5" cellpadding="10" height="600" width="400" style="background-color:yellowgreen;>
+
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input type="text" name="first_name" placeholder="Enter first name" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Last Name</td>
+                <td>
+                    <input type="text" name="last_name" placeholder="Enter last name" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Contact No</td>
+                <td>
+                    <input type="number" name="contact_no" placeholder="Enter contact no." required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Landline Number</td>
+                <td>
+                    <input type="number" name="landline_no" placeholder="Enter landline no." required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" placeholder="Enter email" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Birth Date</td>
+                <td>
+                    <input type="date" name="birth_date" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Age</td>
+                <td>
+                    <input type="number" name="age" placeholder="Enter your age" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                </td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>
+                    <textarea name="address" rows="5" cols="25"  required></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td>
+                    <select name="city" required>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Vadodara">Vadodara</option>
+                        <option value="Gandhinagar">Gandhinagar</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Pincode</td>
+                <td>
+                    <input type="number" name="pincode" placeholder="Enter pincode" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Joining Date</td>
+                <td>
+                    <input type="date" name="joining_date" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" name="sub">Submit</button>
+                    <button type="reset" name="reset">Reset</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+</body>
+</html>

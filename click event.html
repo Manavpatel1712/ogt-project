@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Event</title>
+</head>
+<body>
+    <input type="text" id="row"></br>
+    <input type="text" id="cols"></br>
+    <input type="button" value="generate table " id="btnl"></br>
+
+</body>
+
+<script>
+    var btn = document.getElementById("btnl");
+    btn.addEventListener("click", function() {
+        var row = parseInt(document.getElementById("row").value);
+        var cols = parseInt(document.getElementById("cols").value);
+        var table = "<table border='1'>";
+
+        for (var i = 0; i < row; i++) {
+            table += "<tr>";
+            for (var j = 0; j < cols; j++) {
+                table += "<td>Row " + (i + 1) + " Col " + (j + 1) + "</td>";
+            }
+            table += "</tr>";
+        }
+        table += "</table>";
+         
+        document.body.innerHTML += table;
+    });
+</script>
