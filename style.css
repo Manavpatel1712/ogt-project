@@ -1,0 +1,28 @@
+/* .container{
+    border: 2px solid black;
+}
+
+.row{
+    border: 2px solid red;
+    min-height: 200px;
+}
+
+.col{
+    border: 1px solid blue;
+    background: lightblue;
+    padding: 20px;
+} */
+ .container{
+    border: 2px solid black;
+}
+
+.row{
+    border: 2px solid red;
+    min-height: 100px;
+}
+
+.col-lg{
+    background: lightblue;
+    border: 1px solid blue;
+    padding: 20px;
+}
